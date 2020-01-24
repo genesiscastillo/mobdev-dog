@@ -31,7 +31,6 @@ public class DogRestController {
 			return ResponseEntity.status(HttpStatus.OK).body(dogDTO);
 
 		} catch (RestClientException | JsonProcessingException exception) {
-			exception.printStackTrace();
 			return new ResponseEntity(exception.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 	}
