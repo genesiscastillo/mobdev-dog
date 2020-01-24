@@ -2,11 +2,11 @@ package cl.mobdev.app;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@EnableAutoConfiguration
+@ComponentScan("cl.mobdev")
 public class DogConfigurationApp implements CommandLineRunner  {
 
 	public static void main(String[] args) {
@@ -15,6 +15,6 @@ public class DogConfigurationApp implements CommandLineRunner  {
 
 	@Override
 	public void run(String... args) throws Exception {
-			System.out.println("HOLAAAAAAAAAAAAAAa");
+			System.out.println("use http://localhost:8081/dog/hound");
 	}
 }

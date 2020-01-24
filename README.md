@@ -1,9 +1,16 @@
-## SpringBoot - Dog ##
+SpringBoot - Dog
+=================
 
-###El primer micro servicio### 
+## Iniciar Spring-Boot ##
+* mvnw clean spring-boot:run
+
+## Abstract ##
+## ================ ##
+
+## El primer micro servicio ## 
 es de configuración y debe contener las urls a consumir por el segundo micro servicio.
 
-###El segundo micro servicio### 
+## El segundo micro servicio ### 
 recibe como parámetro la raza a consultar y debe cumplir con lo siguiente:
 
 Haciendo uso de la API publica: https://dog.ceo/dog-api/

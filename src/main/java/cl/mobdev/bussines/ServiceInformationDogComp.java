@@ -20,13 +20,13 @@ public class ServiceInformationDogComp {
 
 		ResponseDogCeoVO imagenes = dogClientService.obtenerImagenesPorRaza(breed);
 
-		ResponseDogCeoVO subRaza = dogClientService.obtenerPorSubRaza(breed);
+		ResponseDogCeoVO subRazas = dogClientService.obtenerPorSubRaza(breed);
 
 		DogDTO dogDTO = new DogDTO( breed );
 		
-		subRaza.getMessage().stream().forEach(e -> dogDTO.addSubBreed(e));
+		subRazas.getMessage().stream().forEach(subraza -> dogDTO.addSubBreed(subraza));
 		
-		imagenes.getMessage().stream().forEach(e -> dogDTO.setBreed(e));
+		imagenes.getMessage().stream().forEach(image -> dogDTO.addImage(image));
 		
 		return dogDTO;
 	}

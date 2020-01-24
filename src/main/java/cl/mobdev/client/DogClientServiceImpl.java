@@ -1,6 +1,8 @@
 package cl.mobdev.client;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
@@ -18,12 +20,18 @@ public class DogClientServiceImpl implements DogClientService {
 	private String listImagens;
 	private String listSubBreeds;
 	
+	RestTemplate restTemplate;
+	
+	@Autowired
+	public DogClientServiceImpl(RestTemplateBuilder restTemplateBuilder) {
+        restTemplate = restTemplateBuilder.build();
+	}
+	
 	@Override
 	public ResponseDogCeoVO obtenerImagenesPorRaza(String raza) throws JsonProcessingException, RestClientException {
 
 		String endpointImagenes = String.format("%s" + listImagens, url, raza);
 		
-		RestTemplate restTemplate = new RestTemplate();
 		String resultImages = restTemplate.getForObject(endpointImagenes, String.class);
 
 		ObjectMapper mapper = new ObjectMapper();
@@ -37,13 +45,12 @@ public class DogClientServiceImpl implements DogClientService {
 		
 		String endpointSubBreed = String.format("%s"+listSubBreeds, url ,raza);
 
-		RestTemplate restTemplate = new RestTemplate();
 	    String resultSubBreed = restTemplate.getForObject(endpointSubBreed, String.class);
 	    
 	    ObjectMapper mapper = new ObjectMapper();
-		ResponseDogCeoVO subRaza = mapper.readValue(resultSubBreed,	ResponseDogCeoVO.class);
+		ResponseDogCeoVO responseDogCeoVO = mapper.readValue(resultSubBreed,	ResponseDogCeoVO.class);
 
-		return subRaza;
+		return responseDogCeoVO;
 	}
 	
 	public void setUrl(String url) {
