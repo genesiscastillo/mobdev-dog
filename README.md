@@ -4,6 +4,12 @@ SpringBoot - Dog
 ## Iniciar Spring-Boot ##
 * mvnw clean spring-boot:run
 
+## Testing urls ##
+* http://localhost:8081/dog/hound
+* http://localhost:8081/dog/frise
+* http://localhost:8081/dog/mastiff
+* http://localhost:8081/dog/pointer
+
 ## Abstract ##
 ## ================ ##
 
